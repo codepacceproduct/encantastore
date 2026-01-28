@@ -1,0 +1,189 @@
+import { cn } from "@/lib/utils"
+import { ArrowUpRight, ArrowDownLeft, Wallet, SendHorizontal, QrCode, Plus, ArrowRight, CreditCard } from "lucide-react"
+
+interface AccountItem {
+  id: string
+  title: string
+  description?: string
+  balance: string
+  type: "savings" | "checking" | "investment" | "debt"
+}
+
+interface List01Props {
+  totalBalance?: string
+  accounts?: AccountItem[]
+  className?: string
+}
+
+const ACCOUNTS: AccountItem[] = [
+  {
+    id: "1",
+    title: "Main Savings",
+    description: "Personal savings",
+    balance: "$8,459.45",
+    type: "savings",
+  },
+  {
+    id: "2",
+    title: "Checking Account",
+    description: "Daily expenses",
+    balance: "$2,850.00",
+    type: "checking",
+  },
+  {
+    id: "3",
+    title: "Investment Portfolio",
+    description: "Stock & ETFs",
+    balance: "$15,230.80",
+    type: "investment",
+  },
+  {
+    id: "4",
+    title: "Credit Card",
+    description: "Pending charges",
+    balance: "$1,200.00",
+    type: "debt",
+  },
+  {
+    id: "5",
+    title: "Savings Account",
+    description: "Emergency fund",
+    balance: "$3,000.00",
+    type: "savings",
+  },
+]
+
+export default function List01({ totalBalance = "$26,540.25", accounts = ACCOUNTS, className }: List01Props) {
+  return (
+    <div
+      className={cn(
+        "w-full max-w-xl mx-auto",
+        "bg-card",
+        "border border-border",
+        "rounded-xl shadow-sm backdrop-blur-xl",
+        className,
+      )}
+    >
+      {/* Total Balance Section */}
+      <div className="p-4 border-b border-border">
+        <p className="text-xs text-muted-foreground">Total Balance</p>
+        <h1 className="text-2xl font-semibold text-card-foreground">{totalBalance}</h1>
+      </div>
+
+      {/* Accounts List */}
+      <div className="p-3">
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-xs font-medium text-card-foreground">Your Accounts</h2>
+        </div>
+
+        <div className="space-y-1">
+          {accounts.map((account) => (
+            <div
+              key={account.id}
+              className={cn(
+                "group flex items-center justify-between",
+                "p-2 rounded-lg",
+                "hover:bg-muted",
+                "transition-all duration-200",
+              )}
+            >
+              <div className="flex items-center gap-2">
+                <div
+                  className={cn("p-1.5 rounded-lg", {
+                    "bg-chart-2/20 text-chart-2": account.type === "savings",
+                    "bg-chart-1/20 text-chart-1": account.type === "checking",
+                    "bg-chart-4/20 text-chart-4": account.type === "investment",
+                    "bg-destructive/20 text-destructive": account.type === "debt",
+                  })}
+                >
+                  {account.type === "savings" && <Wallet className="w-3.5 h-3.5" />}
+                  {account.type === "checking" && <QrCode className="w-3.5 h-3.5" />}
+                  {account.type === "investment" && <ArrowUpRight className="w-3.5 h-3.5" />}
+                  {account.type === "debt" && <CreditCard className="w-3.5 h-3.5" />}
+                </div>
+                <div>
+                  <h3 className="text-xs font-medium text-card-foreground">{account.title}</h3>
+                  {account.description && <p className="text-[11px] text-muted-foreground">{account.description}</p>}
+                </div>
+              </div>
+
+              <div className="text-right">
+                <span className="text-xs font-medium text-card-foreground">{account.balance}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Updated footer with four buttons */}
+      <div className="p-2 border-t border-border">
+        <div className="grid grid-cols-4 gap-2">
+          <button
+            type="button"
+            className={cn(
+              "flex items-center justify-center gap-2",
+              "py-2 px-3 rounded-lg",
+              "text-xs font-medium",
+              "bg-primary",
+              "text-primary-foreground",
+              "hover:bg-primary/90",
+              "shadow-sm hover:shadow",
+              "transition-all duration-200",
+            )}
+          >
+            <Plus className="w-3.5 h-3.5" />
+            <span>Add</span>
+          </button>
+          <button
+            type="button"
+            className={cn(
+              "flex items-center justify-center gap-2",
+              "py-2 px-3 rounded-lg",
+              "text-xs font-medium",
+              "bg-primary",
+              "text-primary-foreground",
+              "hover:bg-primary/90",
+              "shadow-sm hover:shadow",
+              "transition-all duration-200",
+            )}
+          >
+            <SendHorizontal className="w-3.5 h-3.5" />
+            <span>Send</span>
+          </button>
+          <button
+            type="button"
+            className={cn(
+              "flex items-center justify-center gap-2",
+              "py-2 px-3 rounded-lg",
+              "text-xs font-medium",
+              "bg-primary",
+              "text-primary-foreground",
+              "hover:bg-primary/90",
+              "shadow-sm hover:shadow",
+              "transition-all duration-200",
+            )}
+          >
+            <ArrowDownLeft className="w-3.5 h-3.5" />
+            <span>Top-up</span>
+          </button>
+          <button
+            type="button"
+            className={cn(
+              "flex items-center justify-center gap-2",
+              "py-2 px-3 rounded-lg",
+              "text-xs font-medium",
+              "bg-primary",
+              "text-primary-foreground",
+              "hover:bg-primary/90",
+              "shadow-sm hover:shadow",
+              "transition-all duration-200",
+            )}
+          >
+            <ArrowRight className="w-3.5 h-3.5" />
+            <span>More</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
