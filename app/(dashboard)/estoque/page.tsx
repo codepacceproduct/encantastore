@@ -163,9 +163,8 @@ export default function EstoquePage() {
   }
 
   return (
-    <div className="min-h-screen p-8">
-      {/* Header */}
-      <div className="mb-8 flex items-start justify-between">
+    <div className="min-h-screen p-4 sm:p-6 lg:p-8">
+      <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-3xl font-semibold text-black">Produtos & Estoque</h1>
           <p className="mt-1 text-sm text-gray-500">Gestão de produtos e variantes</p>
@@ -199,7 +198,6 @@ export default function EstoquePage() {
         </Dialog>
       </div>
 
-      {/* Products List */}
       {products.length === 0 ? (
         <Card className="border border-gray-200 bg-white p-12">
           <div className="text-center">
@@ -210,8 +208,8 @@ export default function EstoquePage() {
       ) : (
         <div className="space-y-4">
           {products.map((product) => (
-            <Card key={product.id} className="border border-gray-200 bg-white p-6">
-              <div className="mb-4 flex items-start justify-between">
+            <Card key={product.id} className="border border-gray-200 bg-white p-4 sm:p-6">
+              <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <div className="flex items-center gap-3">
                     <h3 className="text-lg font-semibold text-black">{product.name}</h3>
@@ -220,7 +218,7 @@ export default function EstoquePage() {
                     </Badge>
                   </div>
                   <p className="mt-1 text-sm text-gray-500">Categoria: {product.category_name}</p>
-                  <div className="mt-2 flex gap-4 text-sm">
+                  <div className="mt-2 flex flex-wrap gap-2 sm:gap-4 text-sm">
                     <span className="text-gray-600">
                       Custo: <span className="font-medium text-black">R$ {product.cost.toFixed(2)}</span>
                     </span>
@@ -253,10 +251,9 @@ export default function EstoquePage() {
                 </div>
               </div>
 
-              {/* Stock Variants */}
               <div className="mt-4 border-t border-gray-100 pt-4">
                 <h4 className="mb-3 text-xs font-medium uppercase tracking-wider text-gray-500">Estoque por Tamanho</h4>
-                <div className="grid grid-cols-5 gap-3">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                   {productVariants[product.id]?.map((variant) => (
                     <StockInput
                       key={variant.id}

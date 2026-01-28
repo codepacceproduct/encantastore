@@ -124,16 +124,14 @@ export default function CustosPage() {
   }
 
   return (
-    <div className="min-h-screen p-8">
-      {/* Header */}
-      <div className="mb-8">
+    <div className="min-h-screen p-4 sm:p-6 lg:p-8">
+      <div className="mb-6 sm:mb-8">
         <h1 className="text-3xl font-semibold text-black">Gestão de Custos</h1>
         <p className="mt-1 text-sm text-gray-500">Controle financeiro automatizado</p>
       </div>
 
-      {/* Summary Card */}
-      <Card className="mb-6 border border-gray-200 bg-white p-6">
-        <div className="flex items-center justify-between">
+      <Card className="mb-6 border border-gray-200 bg-white p-4 sm:p-6">
+        <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
           <div>
             <span className="text-xs font-medium uppercase tracking-wider text-gray-500">Total Fixo Recorrente</span>
             <p className="mt-2 text-3xl font-semibold text-black">R$ {totalFixed.toFixed(2)}</p>
@@ -149,7 +147,7 @@ export default function CustosPage() {
         </TabsList>
 
         <TabsContent value="fixed" className="space-y-4">
-          <div className="flex justify-end">
+          <div className="flex justify-start sm:justify-end">
             <Dialog open={isFixedDialogOpen} onOpenChange={setIsFixedDialogOpen}>
               <DialogTrigger asChild>
                 <Button className="bg-black text-white hover:bg-black/90">
@@ -188,7 +186,10 @@ export default function CustosPage() {
             <Card className="border border-gray-200 bg-white">
               <div className="divide-y divide-gray-200">
                 {fixedCosts.map((cost) => (
-                  <div key={cost.id} className="flex items-center justify-between p-6">
+                  <div
+                    key={cost.id}
+                    className="flex flex-col items-start justify-between gap-3 p-4 sm:flex-row sm:items-center sm:p-6"
+                  >
                     <div className="flex items-center gap-3">
                       <div>
                         <p className="font-medium text-black">{cost.name}</p>
@@ -216,7 +217,7 @@ export default function CustosPage() {
         </TabsContent>
 
         <TabsContent value="variable" className="space-y-4">
-          <div className="flex justify-end">
+          <div className="flex justify-start sm:justify-end">
             <Dialog open={isVariableDialogOpen} onOpenChange={setIsVariableDialogOpen}>
               <DialogTrigger asChild>
                 <Button className="bg-black text-white hover:bg-black/90">
@@ -255,7 +256,10 @@ export default function CustosPage() {
             <Card className="border border-gray-200 bg-white">
               <div className="divide-y divide-gray-200">
                 {variableCosts.map((cost) => (
-                  <div key={cost.id} className="flex items-center justify-between p-6">
+                  <div
+                    key={cost.id}
+                    className="flex flex-col items-start justify-between gap-3 p-4 sm:flex-row sm:items-center sm:p-6"
+                  >
                     <div className="flex items-center gap-3">
                       <div>
                         <p className="font-medium text-black">{cost.name}</p>

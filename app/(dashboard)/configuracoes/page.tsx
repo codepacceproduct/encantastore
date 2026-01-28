@@ -101,9 +101,8 @@ export default function ConfiguracoesPage() {
   }
 
   return (
-    <div className="min-h-screen p-8">
-      {/* Header */}
-      <div className="mb-8">
+    <div className="min-h-screen p-4 sm:p-6 lg:p-8">
+      <div className="mb-6 sm:mb-8">
         <h1 className="text-3xl font-semibold text-black">Configurações Básicas</h1>
         <p className="mt-1 text-sm text-gray-500">Categorias e tamanhos</p>
       </div>
@@ -115,9 +114,9 @@ export default function ConfiguracoesPage() {
         </TabsList>
 
         <TabsContent value="categories" className="space-y-6">
-          <Card className="border border-gray-200 bg-white p-6">
+          <Card className="border border-gray-200 bg-white p-4 sm:p-6">
             <h3 className="mb-4 text-sm font-medium uppercase tracking-wider text-gray-500">Adicionar Categoria</h3>
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2 sm:flex-row">
               <Input
                 placeholder="Ex: Biquíni, Maiô, Saída de Praia"
                 value={newCategory}
@@ -151,9 +150,9 @@ export default function ConfiguracoesPage() {
         </TabsContent>
 
         <TabsContent value="sizes" className="space-y-6">
-          <Card className="border border-gray-200 bg-white p-6">
+          <Card className="border border-gray-200 bg-white p-4 sm:p-6">
             <h3 className="mb-4 text-sm font-medium uppercase tracking-wider text-gray-500">Adicionar Tamanho</h3>
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2 sm:flex-row">
               <Input
                 placeholder="Ex: P, M, G, GG, XG"
                 value={newSize}
@@ -168,7 +167,7 @@ export default function ConfiguracoesPage() {
           </Card>
 
           <Card className="border border-gray-200 bg-white">
-            <div className="grid grid-cols-3 gap-4 p-6">
+            <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 sm:p-6 lg:grid-cols-3">
               {sizes.map((size) => (
                 <div key={size.id} className="flex items-center justify-between rounded-lg border border-gray-200 p-4">
                   <span className="font-medium text-black">{size.name}</span>

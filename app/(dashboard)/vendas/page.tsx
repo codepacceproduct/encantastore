@@ -133,9 +133,8 @@ export default function VendasPage() {
   }
 
   return (
-    <div className="min-h-screen p-8">
-      {/* Header */}
-      <div className="mb-8 flex items-start justify-between">
+    <div className="min-h-screen p-4 sm:p-6 lg:p-8">
+      <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-3xl font-semibold text-black">Vendas</h1>
           <p className="mt-1 text-sm text-gray-500">PDV e histórico de transações</p>
@@ -174,7 +173,6 @@ export default function VendasPage() {
         </Dialog>
       </div>
 
-      {/* Search */}
       <Card className="mb-6 border border-gray-200 bg-white p-4">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />

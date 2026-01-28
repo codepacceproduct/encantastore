@@ -68,17 +68,15 @@ export default function PrecoPage() {
   }
 
   return (
-    <div className="min-h-screen p-8">
-      {/* Header */}
-      <div className="mb-8">
+    <div className="min-h-screen p-4 sm:p-6 lg:p-8">
+      <div className="mb-6 sm:mb-8">
         <h1 className="text-3xl font-semibold text-black">Calculadora de Preço</h1>
         <p className="mt-1 text-sm text-gray-500">Simulação de margem e precificação</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
-        {/* Input Section */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div className="space-y-6">
-          <Card className="border border-gray-200 bg-white p-6">
+          <Card className="border border-gray-200 bg-white p-4 sm:p-6">
             <div className="mb-6 flex items-center gap-2">
               <Calculator className="h-5 w-5 text-gray-600" />
               <h3 className="text-sm font-medium uppercase tracking-wider text-gray-500">Dados de Entrada</h3>
@@ -126,7 +124,6 @@ export default function PrecoPage() {
           </Card>
         </div>
 
-        {/* Results Section */}
         <div className="space-y-4">
           <h3 className="text-sm font-medium uppercase tracking-wider text-gray-500">Margens Sugeridas</h3>
 
@@ -135,7 +132,7 @@ export default function PrecoPage() {
             const profit = productCost * (margin / 100)
 
             return (
-              <Card key={margin} className="border border-gray-200 bg-white p-6">
+              <Card key={margin} className="border border-gray-200 bg-white p-4 sm:p-6">
                 <div className="mb-4 flex items-baseline justify-between">
                   <span className="text-sm font-medium uppercase tracking-wider text-gray-500">Margem {margin}%</span>
                   <span className="text-3xl font-bold text-green-600">R$ {finalPrice.toFixed(2)}</span>
